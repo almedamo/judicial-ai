@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    env_file: .env
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+    depends_on:
+      - mailhog
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "8025:8025"
